@@ -1,0 +1,6 @@
+@FIXITNOWWEBAPI_HostAddress = http://localhost:5074
+
+GET {{FIXITNOWWEBAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
