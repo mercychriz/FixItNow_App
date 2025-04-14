@@ -1,0 +1,28 @@
+﻿<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:FixItNow.Helpers"
+             x:Class="FixItNow.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Gender Converter -->
+            <helpers:GenderConverter x:Key="GenderConverter" />
+
+            <!-- DataTemplate for Service Providers List -->
+            <DataTemplate x:Key="ServiceTemplate">
+                <ViewCell>
+                    <StackLayout Padding="10" BackgroundColor="#ffffff">
+                        <!-- Display Image for Service Provider -->
+                        <Image Source="{Binding ImagePath}" 
+                               HeightRequest="50" 
+                               WidthRequest="50" 
+                               Aspect="AspectFill" />
+                        <!-- Display Full Name and Phone Number -->
+                        <Label Text="{Binding FullName}" FontSize="16" TextColor="#333" />
+                        <Label Text="{Binding PhoneNumber}" FontSize="14" TextColor="#777" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

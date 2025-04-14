@@ -1,0 +1,31 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FixItNow.View.BookingPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+
+            <Label Text="Booking Appointment" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Your Name" />
+            <Entry Placeholder="Enter your full name"
+                   Text="{Binding CustomerName}" />
+
+            <Label Text="Select Date" />
+            <DatePicker Date="{Binding SelectedDate}" 
+                        MinimumDate="{Binding MinimumDate}" 
+                        MaximumDate="{Binding MaximumDate}" />
+
+            <Label Text="Select Time" />
+            <TimePicker Time="{Binding SelectedTime}" />
+
+            <Button Text="Confirm Booking" 
+                    BackgroundColor="Green" 
+                    TextColor="White" 
+                    Command="{Binding ConfirmBookingCommand}" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

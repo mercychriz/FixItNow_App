@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "About Us";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-primary fw-bold">@ViewBag.Title</h1>
+        <p class="lead text-muted">Learn more about who we are and what we do.</p>
+    </div>
+
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <img src="~/Content/Images/jane_smith.jpg" class="img-fluid rounded shadow" alt="About Us Image" />
+        </div>
+        <div class="col-md-6">
+            <h3 class="fw-semibold text-secondary mb-3">Our Mission</h3>
+            <p class="text-muted">
+                At <strong>FixIt Now</strong>, we're committed to connecting users with skilled service providers quickly and reliably.
+                Our goal is to streamline your access to trusted help — from plumbing to tech support — all in one place.
+            </p>
+            <h3 class="fw-semibold text-secondary mt-4 mb-3">Why Choose Us?</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">✅ Fast & Easy Booking</li>
+                <li class="list-group-item">✅ Verified Professionals</li>
+                <li class="list-group-item">✅ Secure & Transparent</li>
+                <li class="list-group-item">✅ 24/7 Support</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-5 text-center">
+        <h4 class="fw-semibold text-primary">Join thousands of happy users today!</h4>
+        <a href="@Url.Action("SignUp", "Account")" class="btn btn-lg btn-success mt-3">Get Started</a>
+    </div>
+</div>

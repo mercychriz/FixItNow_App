@@ -1,0 +1,61 @@
+﻿@model FixITNowWebApp.ViewModel.UserProfileViewModel
+@{
+    ViewBag.Title = "Create User Profile";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Create Your Profile</h4>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm("Create", "UserProfile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PhoneNumber)
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "Phone Number" })
+                            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PreferredServices)
+                            @Html.TextBoxFor(m => m.PreferredServices, new { @class = "form-control", placeholder = "Preferred Services" })
+                            @Html.ValidationMessageFor(m => m.PreferredServices, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Profile Picture</label>
+                            <input type="file" name="ProfileImageFile" class="form-control" accept="image/*" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>ID Card</label>
+                            <input type="file" name="IdCardImageFile" class="form-control" accept="image/*" />
+                        </div>
+
+                        <input type="hidden" name="UserID" value="@Model.UserID" />
+
+                        <button type="submit" class="btn btn-success w-100">Save Profile</button>
+                    }
+
+                    @if (TempData["Message"] != null)
+                    {
+                        <div class="alert alert-success mt-3">@TempData["Message"]</div>
+                    }
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <div class="alert alert-danger">@error.ErrorMessage</div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

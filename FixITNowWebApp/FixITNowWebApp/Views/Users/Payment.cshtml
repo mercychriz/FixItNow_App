@@ -1,0 +1,35 @@
+﻿@model FixITNowWebApp.ViewModel.BookingViewModel
+
+<h2>Payment</h2>
+
+@using (Html.BeginForm("ConfirmPayment", "Appointment", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ServiceProviderId)
+    @Html.HiddenFor(m => m.Date)
+    @Html.HiddenFor(m => m.Time)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ServiceProviderName)
+        @Html.TextBoxFor(m => m.ServiceProviderName, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CustomerName)
+        @Html.TextBoxFor(m => m.CustomerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CustomerName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Amount)
+        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", type = "number", step = "0.01" })
+        @Html.ValidationMessageFor(m => m.Amount)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Method)
+        @Html.DropDownListFor(m => m.Method, new SelectList(new[] { "Credit Card", "Debit Card", "PayPal" }), "-- Select Method --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Method)
+    </div>
+
+    <button type="submit" class="btn btn-success">Pay Now</button>
+}

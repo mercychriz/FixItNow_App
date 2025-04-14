@@ -1,0 +1,44 @@
+﻿@model FixITNowWebApp.ViewModel.UserLandingViewModel
+
+@{
+    ViewBag.Title = "User Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-2">
+            <img src="@(!string.IsNullOrEmpty(Model.ProfileImageBase64)
+                        ? Model.ProfileImageBase64
+                        : Url.Content("~/Content/Images/default_profile.png"))"
+                 class="rounded-circle img-thumbnail"
+                 style="height: 100px; width: 100px;" />
+        </div>
+        <div class="col-md-10 d-flex flex-column justify-content-center">
+            <h3 class="mb-0">@Model.UserFullName</h3>
+            <small class="text-muted">@Model.UserEmail</small>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <input type="text" id="searchBox" class="form-control" placeholder="Search Providers..." />
+    </div>
+
+    <div class="row" id="providerList">
+        @foreach (var provider in Model.ServiceProviders)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img class="card-img-top" src="data:image/png;base64,@provider.ProfileImagePath" style="height: 200px; object-fit: cover;" />
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@provider.BusinessName</h5>
+                        <p class="card-text">@provider.ServicesOffered</p>
+                        <p class="card-text text-muted">Price: @provider.Price</p>
+                        <a href="@Url.Action("Book", "Appointment", new { id = provider.ServiceProviderId })" class="btn btn-success rounded-pill w-100">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

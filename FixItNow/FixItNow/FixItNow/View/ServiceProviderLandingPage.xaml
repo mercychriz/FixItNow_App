@@ -1,0 +1,100 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FixItNow.ViewModel"
+             x:Class="FixItNow.View.ServiceProviderLandingPage"
+             Title="Service Provider Dashboard"
+             BackgroundColor="#f7f7f7"
+             Padding="10"
+             x:Name="LandingPageRoot">
+   
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20">
+
+                <!-- Profile Section -->
+                <Frame Padding="15" CornerRadius="10" BackgroundColor="White" BorderColor="#ddd">
+                    <StackLayout>
+                        <Image Source="{Binding ProfileImage}" HeightRequest="100" WidthRequest="100" Aspect="AspectFill" />
+                        <Label Text="{Binding BusinessName}" FontSize="20" FontAttributes="Bold" />
+                        <Label Text="{Binding Bio}" FontSize="14" TextColor="#666" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Manage Services -->
+                <StackLayout Padding="0,10">
+                    <Label Text="Manage Services" FontSize="18" FontAttributes="Bold" />
+                    <Button Text="Add New Service"
+                            BackgroundColor="#007bff"
+                            TextColor="White"
+                            Command="{Binding AddNewServiceCommand}" />
+                </StackLayout>
+
+                <!-- Services List -->
+                <CollectionView ItemsSource="{Binding Services}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="5,5" BackgroundColor="White" BorderColor="#ddd" CornerRadius="10">
+                                <StackLayout>
+                                    <Label Text="{Binding ServiceName}" FontSize="16" FontAttributes="Bold" />
+                                    <Label Text="{Binding ServiceDescription}" FontSize="14" TextColor="#666" />
+
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                                        <Button Text="Edit"
+                                                BackgroundColor="#28a745"
+                                                TextColor="White"
+                                                Command="{Binding BindingContext.EditServiceCommand, Source={x:Reference Name=ServiceProviderLandingPage}}"
+                                                CommandParameter="{Binding .}" />
+
+                                        <Button Text="Delete"
+                                                BackgroundColor="#dc3545"
+                                                TextColor="White"
+                                                Command="{Binding BindingContext.DeleteServiceCommand, Source={x:Reference Name=ServiceProviderLandingPage}}"
+                                                CommandParameter="{Binding .}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Appointments List -->
+                <StackLayout Padding="0,10">
+                    <Label Text="Upcoming Appointments" FontSize="18" FontAttributes="Bold" />
+                </StackLayout>
+
+                <CollectionView ItemsSource="{Binding Appointments}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10" Margin="5,5" BackgroundColor="White" BorderColor="#ddd" CornerRadius="10">
+                                <StackLayout>
+                                    <Label Text="{Binding CustomerName}" FontSize="16" FontAttributes="Bold" />
+                                    <Label Text="{Binding AppointmentDate, StringFormat='{0:dd MMM yyyy}'}" FontSize="14" TextColor="#666" />
+
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+                                        <Button Text="Mark Completed"
+                                                BackgroundColor="#007bff"
+                                                TextColor="White"
+                                                Command="{Binding BindingContext.MarkCompletedCommand, Source={x:Reference Name=ServiceProviderLandingPage}}"
+                                                CommandParameter="{Binding .}" />
+
+                                        <Button Text="Delete"
+                                                BackgroundColor="#dc3545"
+                                                TextColor="White"
+                                                Command="{Binding BindingContext.DeleteServiceCommand, Source={x:Reference Name=ServiceProviderLandingPage}}"
+                                                CommandParameter="{Binding .}" />
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

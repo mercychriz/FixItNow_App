@@ -1,0 +1,48 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FixItNow.View.PaymentPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+
+            <Label Text="Payment" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+
+            <Label Text="{Binding SelectedServiceProvider.FullName}" />
+            <Label Text="{Binding SelectedDate}" />
+            <Label Text="{Binding SelectedTime}" />
+
+            <Entry x:Name="AmountEntry" 
+                   Placeholder="Enter Amount" 
+                   Keyboard="Numeric"/>
+
+            <Picker x:Name="PaymentMethodPicker" Title="Select Payment Method">
+                <Picker.Items>
+                    <x:String>Credit Card</x:String>
+                    <x:String>Debit Card</x:String>
+                    <x:String>PayPal</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Entry x:Name="CardNumberEntry" 
+                   Placeholder="Card Number" 
+                   Keyboard="Numeric" />
+
+            <Entry x:Name="ExpiryEntry" 
+                   Placeholder="MM/YY" 
+                   Keyboard="Numeric" />
+
+            <Entry x:Name="CVVEntry" 
+                   Placeholder="CVV" 
+                   IsPassword="True" 
+                   Keyboard="Numeric" />
+
+            <Button Text="Pay Now" 
+                    BackgroundColor="Green" 
+                    TextColor="White" 
+                    Clicked="OnPayNowClicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

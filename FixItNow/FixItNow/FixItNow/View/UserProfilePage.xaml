@@ -1,0 +1,46 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FixItNow.View.UserProfilePage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+
+            <Label Text="Create User Profile"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black"/>
+
+            <!-- Profile Picture -->
+            <Frame HasShadow="True" CornerRadius="50" Padding="5" BackgroundColor="LightGray" HorizontalOptions="Center">
+                <Image HeightRequest="100" WidthRequest="100" Aspect="AspectFill" Source="{Binding ProfileImage}" />
+            </Frame>
+            <Button Text="Upload Profile Picture"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    Command="{Binding UploadProfilePictureCommand}"/>
+
+            <!-- ID Card -->
+            <Frame HasShadow="True" CornerRadius="10" Padding="5" BackgroundColor="LightGray" HorizontalOptions="Center">
+                <Image HeightRequest="100" WidthRequest="150" Aspect="AspectFit" Source="{Binding IdCardImage}" />
+            </Frame>
+            <Button Text="Upload ID Card"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    Command="{Binding UploadIdCardCommand}"/>
+
+            <!-- Fields -->
+            <Entry Placeholder="Phone Number" Keyboard="Telephone" Text="{Binding PhoneNumber}" />
+            <Entry Placeholder="Preferred Services" Text="{Binding PreferredServices}" />
+
+            <!-- Save Button -->
+            <Button Text="Save Profile"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    Command="{Binding SaveProfileCommand}"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

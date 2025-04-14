@@ -1,0 +1,24 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FixItNow.ViewModel"
+             x:Class="FixItNow.View.EditServicePage">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+
+            <Label Text="Edit Service" FontSize="24" HorizontalOptions="Center" />
+
+            <Label Text="Service Name" />
+            <Entry Text="{Binding ServiceName}" Placeholder="Enter service name" />
+
+            <Label Text="Service Description" />
+            <Editor Text="{Binding ServiceDescription}" Placeholder="Enter service description" HeightRequest="100" />
+
+            <Label Text="Price" />
+            <Entry Text="{Binding Price}" Placeholder="Enter price" Keyboard="Numeric" />
+
+            <Button Text="Save Changes" Command="{Binding SaveChangesCommand}" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

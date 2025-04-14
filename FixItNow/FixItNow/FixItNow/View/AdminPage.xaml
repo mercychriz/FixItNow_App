@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FixItNow.View.AdminPage"
+             BackgroundColor="#f4f4f4"
+             Title="Admin Dashboard">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+
+            <Label Text="Admin Dashboard"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Loading Spinner -->
+            <ActivityIndicator x:Name="LoadingIndicator"
+                               IsRunning="False"
+                               IsVisible="False"
+                               Color="#007bff"
+                               HeightRequest="40"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center" />
+
+            <!-- List of Services -->
+            <CollectionView x:Name="ServicesCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="ServicesCollectionView_SelectionChanged"
+                            HeightRequest="300">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10"
+                                     BackgroundColor="White"
+                                     Margin="0,5"
+                                     Orientation="Vertical">
+                            <Label Text="{Binding ServiceName}" FontAttributes="Bold" />
+                            <Label Text="{Binding ServiceDescription}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Action Buttons -->
+            <Button Text="Add New Service" BackgroundColor="#3498db" TextColor="White" Clicked="OnAddNewServiceClicked"/>
+            <Button Text="Edit Selected Service" BackgroundColor="#f39c12" TextColor="White" Clicked="OnEditServiceClicked"/>
+            <Button Text="Delete Selected Service" BackgroundColor="#e74c3c" TextColor="White" Clicked="OnDeleteServiceClicked"/>
+            <Button Text="Download CSV Report" BackgroundColor="#9b59b6" TextColor="White" Clicked="OnDownloadReportsClicked"/>
+            <Button Text="Log Out" BackgroundColor="#e67e22" TextColor="White" Clicked="OnLogOutClicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

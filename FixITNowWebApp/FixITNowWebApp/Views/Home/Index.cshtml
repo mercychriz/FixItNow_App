@@ -1,0 +1,28 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-container" style="text-align: center; padding: 40px 20px;">
+    <img src="~/Content/Images/Now.png" alt="FixItNow Logo" style="height: 300px; width: 250px; object-fit: contain; margin-bottom: 20px;" />
+
+    <h1 style="color: forestgreen; font-size: 30px; font-family: sans-serif;">
+        Welcome to FIXITNOW Service App!
+    </h1>
+
+    <p style="font-size: small; padding: 10px 30px;">
+        Where Every Service is One Tap Away
+    </p>
+
+    <div style="margin-top: 100px; display: flex; justify-content: center; gap: 20px;">
+        <a href="@Url.Action("Login", "Account")" class="btn btn-success" style="width: 140px; height: 50px; line-height: 50px; border-radius: 25px; font-weight: bold;">
+            Log In
+        </a>
+
+        <a href="@Url.Action("SignUp", "Account")" class="btn btn-outline-dark" style="width: 140px; height: 50px; line-height: 50px; border-radius: 25px; font-weight: bold;">
+            Sign Up
+        </a>
+    </div>
+</div>

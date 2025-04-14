@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FixItNow.View.ConfirmationPage">
+    <StackLayout Padding="20" VerticalOptions="CenterAndExpand">
+
+        <Label Text="Booking Successful!" 
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" 
+               TextColor="Green"/>
+
+        <Label x:Name="BookingDetailsLabel"
+               FontSize="18"
+               HorizontalOptions="Center"/>
+
+        <Button Text="Back to Home"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                CornerRadius="20"
+                HeightRequest="50"
+                Clicked="OnBackToHomeClicked"/>
+
+    </StackLayout>
+</ContentPage>

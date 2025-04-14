@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FixItNow.MainPage">
+
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20">
+        <Image Source="Now.png"
+           HeightRequest="300"
+           WidthRequest="250"
+           Aspect="AspectFill"
+           HorizontalOptions="Center"/>
+
+        <Label Text="Welcome to FIXITNOW Service App!"
+           HorizontalTextAlignment="Center"
+           TextColor="ForestGreen"
+           FontSize="30" 
+               FontFamily="sans-serif"/>
+
+        <Label Text="Where Every Service is One Tap Away"
+           FontSize="Small"
+           Padding="30,10,30,10"
+           HorizontalTextAlignment="Center"
+             />
+
+
+        <StackLayout Orientation="Horizontal"
+                 HorizontalOptions="Center"
+                 Spacing="20"
+                 Margin="0,100,0,0">
+
+
+            <Button Text="Log In"
+                WidthRequest="140"
+                HeightRequest="50"
+                CornerRadius="25"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                     Clicked="NavigateToLogin"/>
+
+            <Button Text="Sign Up"
+                WidthRequest="140"
+                HeightRequest="50"
+                CornerRadius="25"
+                BackgroundColor="White"
+                TextColor="Black"
+                     Clicked="NavigateToSignUP"/>
+        </StackLayout>
+
+    </StackLayout>
+
+
+</ContentPage>

@@ -1,0 +1,32 @@
+﻿@model FixITNowWebApp.DTOs.ServiceDto
+@{
+    ViewBag.Title = "Add Service";
+}
+
+<h2>Add New Service</h2>
+
+@using (Html.BeginForm("Add", "Admin", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ServiceProviderId)
+        @Html.TextBoxFor(m => m.ServiceProviderId, new { @class = "form-control", placeholder = "Enter Service Provider ID" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ServiceName)
+        @Html.TextBoxFor(m => m.ServiceName, new { @class = "form-control", placeholder = "Enter Service Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ServiceDescription)
+        @Html.TextAreaFor(m => m.ServiceDescription, new { @class = "form-control", placeholder = "Enter Description", rows = "3" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control", placeholder = "Enter Price", type = "number", step = "0.01" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Service</button>
+    <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Cancel</a>
+}

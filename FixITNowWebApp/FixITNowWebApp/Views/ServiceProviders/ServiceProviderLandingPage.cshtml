@@ -1,0 +1,78 @@
+﻿@model FixITNowWebApp.ViewModel.ServiceProviderLandingViewModel
+
+@{
+    ViewBag.Title = "Service Provider Dashboard";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center text-primary">Service Provider Dashboard</h2>
+
+    <!-- Profile Section -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body text-center">
+            @if (!string.IsNullOrEmpty(Model.ProfileImageBase64))
+            {
+                <img src="@Model.ProfileImageBase64" class="rounded-circle mb-2" style="width:100px; height:100px;" />
+            }
+            else
+            {
+                <img src="~/Content/default_profile.png" class="rounded-circle mb-2" style="width:100px; height:100px;" />
+            }
+            <h4>@Model.BusinessName</h4>
+            <p class="text-muted">@Model.Bio</p>
+        </div>
+    </div>
+
+    <!-- Manage Services Section -->
+    <div class="mb-3">
+        <h4>Manage Services</h4>
+        <a href="@Url.Action("Create", "Service")" class="btn btn-primary mb-3">Add New Service</a>
+
+        @if (Model.Services != null && Model.Services.Any())
+        {
+            foreach (var service in Model.Services)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>@service.ServiceName</h5>
+                        <p>@service.ServiceDescription</p>
+                        <div class="d-flex gap-2">
+                            <a href="@Url.Action("Edit", "Service", new { id = service.ServiceId })" class="btn btn-success">Edit</a>
+                            <a href="@Url.Action("Delete", "Service", new { id = service.ServiceId })" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No services added yet.</p>
+        }
+    </div>
+
+    <!-- Appointments Section -->
+    <div class="mb-3">
+        <h4>Upcoming Appointments</h4>
+
+        @if (Model.Appointments != null && Model.Appointments.Any())
+        {
+            foreach (var appointment in Model.Appointments)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5>@appointment.CustomerName</h5>
+                        <p><strong>Date:</strong> @appointment.AppointmentDate.ToString("dd MMM yyyy")</p>
+                        <div class="d-flex gap-2">
+                            <a href="@Url.Action("MarkCompleted", "Appointment", new { id = appointment.AppointmentId })" class="btn btn-primary">Mark Completed</a>
+                            <a href="@Url.Action("Delete", "Appointment", new { id = appointment.AppointmentId })" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No upcoming appointments.</p>
+        }
+    </div>
+</div>

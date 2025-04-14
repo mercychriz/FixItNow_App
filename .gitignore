@@ -1,0 +1,15 @@
+# Ignore build files and user settings
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+*.apk
+*.pdb
+*.dll
+*.db
+*.db-shm
+*.db-wal
+.env
+.vscode/
+*.DS_Store

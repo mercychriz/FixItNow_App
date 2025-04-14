@@ -1,0 +1,22 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FixItNow.ViewModel"
+             x:Class="FixItNow.View.AddServicePage">
+
+    <ContentPage.BindingContext>
+        <vm:AddServiceViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Padding="20">
+
+            <Entry Placeholder="Service Name" Text="{Binding ServiceName}" />
+            <Entry Placeholder="Description" Text="{Binding ServiceDescription}" />
+            <Entry Placeholder="Price" Keyboard="Numeric" Text="{Binding Price}" />
+
+            <Button Text="Save Service" Command="{Binding SaveServiceCommand}" />
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

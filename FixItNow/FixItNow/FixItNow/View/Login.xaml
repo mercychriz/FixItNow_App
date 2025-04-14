@@ -1,0 +1,47 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FixItNow.View.Login">
+
+    <ContentPage.Content>
+        <StackLayout Padding="30" Spacing="15" VerticalOptions="Center">
+
+            <Label Text="Login"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   TextColor="ForestGreen" />
+
+            <Entry Placeholder="Email"
+                   Text="{Binding Email}"
+                   Keyboard="Email" />
+
+            <Entry Placeholder="Password"
+                   Text="{Binding Password}"
+                   IsPassword="True" />
+
+            <Button Text="Login"
+                    Command="{Binding LoginCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="25"
+                    HeightRequest="50" />
+
+            <Label Text="Forgot Password?"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label Text="Don't have an account? Sign Up"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToSignUpCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,32 @@
+﻿@model FixItNowWebApp.DTOs.LoginDto
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2 class="text-center text-success">Login</h2>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+    </div>
+
+    <button type="submit" class="btn btn-success btn-block">Login</button>
+}
+
+@if (ViewBag.Error != null)
+{
+    <p class="text-danger text-center mt-3">@ViewBag.Error</p>
+}
+
+<div class="text-center mt-3">
+    <a href="@Url.Action("ResetPassword", "Account")">Forgot Password?</a><br />
+    <a href="@Url.Action("SignUp", "Account")">Don't have an account? Sign Up</a>
+</div>

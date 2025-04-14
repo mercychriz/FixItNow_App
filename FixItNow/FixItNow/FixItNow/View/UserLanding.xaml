@@ -1,0 +1,66 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:FixItNow.ViewModel"
+             x:Class="FixItNow.View.UserLanding"
+             x:Name="MainPage"
+             BackgroundColor="#f7f7f7"
+             Padding="0">
+
+    <ContentPage.BindingContext>
+        <viewModel:UserLandingViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid RowDefinitions="Auto, Auto, *, Auto" Padding="20">
+
+        <!-- Profile Section -->
+        <StackLayout Grid.Row="0" Orientation="Horizontal" Spacing="15" VerticalOptions="Start" Padding="0, 0, 0, 10">
+            <Frame WidthRequest="80" HeightRequest="80" CornerRadius="40" Padding="0" BackgroundColor="#e0e0e0">
+                <Image Source="{Binding UserProfileImage}" Aspect="AspectFill" />
+            </Frame>
+            <StackLayout VerticalOptions="Center">
+                <Label Text="{Binding UserFullName}" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       TextColor="#333" />
+                <Label Text="{Binding UserEmail}" 
+                       FontSize="14" 
+                       TextColor="#888" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Search Bar -->
+        <SearchBar Grid.Row="1" Placeholder="Search Providers" 
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={RelativeSource Self}}" />
+
+        <!-- Service Providers List -->
+        <CollectionView Grid.Row="2" ItemsSource="{Binding ServiceProviders}" Margin="0,20">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="15" Margin="0,5" BackgroundColor="White" CornerRadius="10" HasShadow="True">
+                        <StackLayout Spacing="10">
+                            <Image Source="{Binding ProfileImagePath}" HeightRequest="80" WidthRequest="80" Aspect="AspectFill" HorizontalOptions="Center" />
+                            <Label Text="{Binding BusinessName}" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" />
+                            <Label Text="{Binding ServicesOffered}" FontSize="14" TextColor="#777" HorizontalOptions="Center" />
+                            <Label Text="{Binding Price, StringFormat='Price: {0}'}" FontSize="14" TextColor="#777" HorizontalOptions="Center" />
+
+                            <Button Text="Book Appointment"
+                                    Command="{Binding BindingContext.BookAppointmentCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                    CommandParameter="{Binding .}" 
+                                    TextColor="White"
+                                    BackgroundColor="#3b9f7f"
+                                    CornerRadius="20" />
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Footer Navigation -->
+        <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="#ffffff">
+            <Button Text="🏠" FontSize="30" HorizontalOptions="StartAndExpand" Command="{Binding HomeCommand}" BackgroundColor="Transparent" />
+            <Button Text="📅" FontSize="30" HorizontalOptions="EndAndExpand" Command="{Binding BookingsCommand}" BackgroundColor="Transparent" />
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

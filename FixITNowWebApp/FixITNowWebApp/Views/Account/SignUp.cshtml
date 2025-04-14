@@ -1,0 +1,70 @@
+﻿@model FixITNowWebApp.ViewModel.SignUpViewModel
+
+@{
+    ViewBag.Title = "Sign Up";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Optional if using a layout
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white text-center">
+                    <h3>Create Your Account</h3>
+                </div>
+
+                <div class="card-body">
+                    @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.FullName)
+                            @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Full Name" })
+                            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.Email)
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.ConfirmPassword)
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.LabelFor(m => m.SelectedRole)
+                            @Html.DropDownListFor(m => m.SelectedRole, new SelectList(Model.Roles), "Select Role", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SelectedRole, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="form-group mb-4">
+                            @Html.LabelFor(m => m.SelectedGender)
+                            @Html.DropDownListFor(m => m.SelectedGender, new SelectList(Model.Genders), "Select Gender", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SelectedGender, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">Sign Up</button>
+                    }
+                </div>
+
+                <div class="card-footer text-center">
+                    <span>Already have an account? </span>
+                    <a href="@Url.Action("Login", "Account")">Login here</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
